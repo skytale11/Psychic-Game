@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Psychic Game</title>
+</head>
+
+<body>
+
+    <h1>The Psychic Game</h1>
+      <h3>Guess what letter I'm thinking of...</h3>
+    <p id="wins"></p>
+    <p id="losses"></p>
+    <p id="guessesRemaining"></p>
+    <p id="attempts"></p>
+    <p id="guessedLetters"</p>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    
+
+var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+
+var wins = 0;
+var losses = 0;
+var guessedArray = [];
+
+$(document).ready(function(){
+    var guessesRemaining = 9;
+    var secretLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+
+    document.onkeyup = function(event) {
+    
+    var letterChoice = event.key;
+
+console.log(guessedArray);
+
+    if(letterChoice === secretLetter){
+        wins++;
+    
+    }else{
+        guessesRemaining--;
+    }
+
+    if(guessesRemaining === 0){
+        losses++;
+        guessesRemaining = 9;
+    }
+
+    document.getElementById('wins').innerHTML = "Wins: " + wins;
+    document.getElementById('losses').innerHTML = "Losses: " + losses;
+    document.getElementById('guessesRemaining').innerHTML = "Guesses Left: " + guessesRemaining;
+    document.getElementById('guessedLetters').innerHTML = "Your Guesses So Far: " + guessedArray;
+    }
+
+});
+
+</script>
+
+</body>
