@@ -45,6 +45,8 @@ $(document).ready(function(){
     if(letterChoice === secretLetter){
         wins++;
         guessedString = "";
+        secretLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+        console.log(secretLetter);
     
     }else{
         guessesRemaining--;
@@ -54,7 +56,11 @@ $(document).ready(function(){
         losses++;
         guessesRemaining = 9;
         guessedString = "";
+        secretLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+        console.log(secretLetter);
     }
+
+
 
 
     document.getElementById('wins').innerHTML = "Wins: " + wins;
