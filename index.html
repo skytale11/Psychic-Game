@@ -23,11 +23,10 @@
     
 
 var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-
-
 var wins = 0;
 var losses = 0;
-var guessedArray = [];
+var guessedString = "";
+
 
 $(document).ready(function(){
     var guessesRemaining = 9;
@@ -37,10 +36,15 @@ $(document).ready(function(){
     
     var letterChoice = event.key;
 
-console.log(guessedArray);
+    if (guessedString == ""){
+        guessedString = letterChoice;
+    }else{
+        guessedString = guessedString + ", " + letterChoice;
+    }
 
     if(letterChoice === secretLetter){
         wins++;
+        guessedString = "";
     
     }else{
         guessesRemaining--;
@@ -49,12 +53,14 @@ console.log(guessedArray);
     if(guessesRemaining === 0){
         losses++;
         guessesRemaining = 9;
+        guessedString = "";
     }
+
 
     document.getElementById('wins').innerHTML = "Wins: " + wins;
     document.getElementById('losses').innerHTML = "Losses: " + losses;
     document.getElementById('guessesRemaining').innerHTML = "Guesses Left: " + guessesRemaining;
-    document.getElementById('guessedLetters').innerHTML = "Your Guesses So Far: " + guessedArray;
+    document.getElementById('guessedLetters').innerHTML = "Your Guesses So Far: " + guessedString;
     }
 
 });
